@@ -121,13 +121,11 @@ function toBeanText(bean) {
 }
 
 function getBeanFieldFromJson(text) {
-    let jsonObject = null;
-    let jsonArray = null;
     text = trimStr(text);
 
     jsonlint.parse(text);
     if (text[0] === "[" && text[text.length - 1] === "]") {
-        jsonArray = JSON.parse(text);
+        let jsonArray = JSON.parse(text);
 
         let keys = {};
 
@@ -171,7 +169,7 @@ function getBeanFieldFromJson(text) {
 
         return $.merge([bean], attrClassAry);
     } else {
-        jsonObject = JSON.parse(text);
+        let jsonObject = JSON.parse(text);
 
         let bean = {};
         let attrClassAry = [];
@@ -197,25 +195,26 @@ function getTypeFromJsonVal(val, key, attrClassAry, isNullable = false) {
     if (val && val.replace) {
         val = val.replace(/ /g, "");
     }
+    let suffix = isNullable ? "?" : "";
     var typeofStr = typeof val;
     if (typeofStr === "number") {
         if (isInt(val)) {
-            return "Int" + (isNullable ? "?" : "");
+            return "Int" + suffix;
         } else {
-            return "Double" + (isNullable ? "?" : "");
+            return "Double" + suffix;
         }
     } else if (typeofStr === "boolean") {
-        return "Boolean" + (isNullable ? "?" : "");
+        return "Boolean" + suffix;
     } else if (isDate(val)) {
-        return "String" + (isNullable ? "?" : ""); // Date
+        return "String" + suffix; // Date
     } else if (!val) {
-        return "String" + (isNullable ? "?" : "");
+        return "String" + suffix;
     } else if (typeofStr === "string") {
-        return "String" + (isNullable ? "?" : "");
+        return "String" + suffix;
     } else {
         if (isArray(val)) {
             var type = getTypeFromJsonVal(val[0], key, attrClassAry);
-            return "List<" + type + ">" + (isNullable ? "?" : "");
+            return "List<" + type + ">" + suffix;
         } else {
             // Will come here，The attribute value is a json，The attribute type is a custom class
             var typeName = camelCaseWithFirstCharUpper(key);
@@ -225,7 +224,7 @@ function getTypeFromJsonVal(val, key, attrClassAry, isNullable = false) {
                 bean[key] = getTypeFromJsonVal(fieldValue, key, attrClassAry);
             }
             attrClassAry.push({ name: typeName, val: bean });
-            return typeName + (isNullable ? "?" : "");
+            return typeName + suffix;
         }
     }
 }
