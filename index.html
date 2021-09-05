@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- saved from url=(0020)https://json2kt.com/ -->
 <html>
     <head lang="en"><meta http-equiv="Content-Type" content="text/html;
             charset=UTF-8">
@@ -124,15 +123,6 @@
         </div>
         <div>
             <div id="source-type" style="display: none">json</div>
-            <div style="display: none" id="getset-templ">
-                public void setA(T a) {
-                this.a = a;
-                }
-                public T getA() {
-                return a;
-                }
-            </div>
-            <!-- Default json -->
             <div style="display: none" id="input-example"></div>
             <script>
                 document.querySelector("#input-example").innerHTML = `[
@@ -150,23 +140,8 @@
 ]`
             </script>
         </div>
-        <script type="text/javascript">
-    function downloadAsFile (mData) {
-    $.ajax({
-    url:"download.php", // the page containing php script
-    type: "POST", // request type
-    data: {
-    'allCalsses': "" + mData.value // all variables i want to pass. In this case, only one.
-    },
-    success:function(result) {
-    // TODO make download url visible
-    document.getElementById("downloadUrl").innerHTML = "<a id='downloadLink' href='"+result+"'></a>";
-    document.getElementById('downloadLink').click();
-    }
-    });
-    }
-    </script>
-        <script src="./json2kt_files/to-kotlin.js"></script><div>
+        <script src="./json2kt_files/to-kotlin.js"></script>
+        <div>
             <footer class="section">
                 <p>Made With ❤️ Love</p>
             </footer>
