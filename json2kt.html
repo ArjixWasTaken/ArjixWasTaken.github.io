@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<!-- saved from url=(0020)https://json2kt.com/ -->
+<html>
+    <head lang="en"><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>json2kt || JSON to Kotlin Class .kt Data Class Generate Online (POJO Class)</title>
+        <link rel="shortcut icon" href="https://json2kt.com/img/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://json2kt.com/img/favicon.ico" type="image/x-icon">
+        <link rel="stylesheet" href="./json2kt_files/bootstrap.min.css">
+        <link rel="stylesheet" href="./json2kt_files/vs.css">
+        <link rel="stylesheet" href="./json2kt_files/jquery-linedtextarea.css">
+        <link rel="stylesheet" href="./json2kt_files/style.css">
+        <link rel="stylesheet" href="./json2kt_files/menu.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- For menu -->
+        <script src="./json2kt_files/jquery.min.js"></script>
+        <script src="./json2kt_files/jquery.1.min.js"></script>
+        <script src="./json2kt_files/menu.js"></script>
+        
+        
+        <style id="d28b254f-1c7c-4756-ac26-976a2bb3f1b0">
+            rt.katakana-terminator-rt::before { content: attr(data-rt); }
+        </style>
+        <script src="./json2kt_files/jsonlint.js"></script>
+        <script src="./json2kt_files/jquery-linedtextarea.js"></script>
+        <script src="./json2kt_files/highlight.pack.js"></script>
+        <script src="./json2kt_files/ZeroClipboard.js"></script>
+        <script src="./json2kt_files/tool.js"></script>
+    </head>
+    <body class="container"><div style="visibility: hidden; border: 0px; width: 0px; height: 0px; position: static; top: 0px; margin-top: 1px; zoom: 1;"><div style="margin: 0px; border: 0px; overflow: visible; width: 1px; padding: 1px; display: block; zoom: 1;"><div style="width: 5px;"></div></div></div>
+    <div class="text-left">
+        <a id="homeLogo" href="http://json2kt.com/" style="float: left;"><span id="logoJson">json</span><span id="logo2">2</span><span id="logoKt">kt</span></a>
+        <div style="float: right;">
+            <a class="topMenu" href="https://json2kt.com/faq.php">Github</a>
+        </div>
+    </div>
+    <!-- Just put some height because menu is not using -->
+    <div style="height: 35px"></div>
+    <div class="myContainer">
+        <h1 class="text-center">JSON to Kotlin Data Class Generator Online</h1>
+        <hr>
+        
+        <div class="row">
+            <div class="col-xs-12 col-sm-4 col-lg-4 leftInfo">
+                <h3>Note: This is a modification of <a href="https://json2kt.com">json2kt</a> made for my own convinience, all credit goes to <a href="https://json2kt.com">json2kt</a>.</h3>
+                <p>
+                    In <a href="https://en.wikipedia.org/wiki/Kotlin_(programming_language)" target="_blank">Kotlin</a> it is known as <a href="https://en.wikipedia.org/wiki/JSON" target="_blank">JSON</a> to Data Class, Traditionally in <a href="https://www.java.com/en/" target="_blank">JAVA</a> it is known as JSON to POJO. This class also known as Data class or Model class. This online kotlin data class generator with dark theme will generate data class with GSON mapping. This will make nice single line format for each field to maintain your code more easily. Input JSON in the box, then you will see the result in the below box in realtime.
+                </p>
+            </div>
+            <div class="col-xs-12 col-sm-8 col-lg-8">
+                <p>
+                </p><h2>Configuration:</h2>
+                <!-- Configuration div -->
+                <div class="config">
+                    <p><label>Package Name:<input id="package-input" value="com.example.example"></label></p>
+                    <p><label>Class Name:<input id="class-input" value="Example"></label></p>
+                </div>
+                <!-- Input area div -->
+                <div>
+                    <h2 class="not-margin-bottom titleHighlight text-center roundCorner">
+                    <label>Input Json Here ↓</label>
+                    </h2>
+                    <div class="error-tip hide"></div>
+                    <div class="input-box">
+                        <textarea id="input-textarea">{
+                        "user_name": "john123",
+                        "email": "john@example.com",
+                        "name": "John Doe"
+                        }</textarea>
+                    </div>
+                </div>
+                <p></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-lg-12">
+                <!-- Generated class div -->
+                <div>
+                    <h2 class="margin-top-bottom titleHighlight text-center roundCorner"><label>Output Data Class ↓</label></h2>
+                    <div class="result-list"><div><textarea class="result ">package com.example.example
+                        import com.fasterxml.jackson.annotation.JsonProperty
+                        
+                        data class Example (
+                        @JsonProperty("user_name") val userName : String,
+                        @JsonProperty("email") val email : String,
+                        @JsonProperty("name") val name : String
+                    )</textarea></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="source-type" style="display: none">json</div>
+        <div style="display: none" id="getset-templ">
+            public void setA(T a) {
+            this.a = a;
+            }
+            public T getA() {
+            return a;
+            }
+        </div>
+        <!-- Default json -->
+        <div style="display: none" id="input-example">{
+    "user_name": "john123",
+    "email": "john@example.com",
+    "name": "John Doe"
+}</div>
+        
+    </div>
+    <script type="text/javascript">
+    function downloadAsFile (mData) {
+    $.ajax({
+    url:"download.php", // the page containing php script
+    type: "POST", // request type
+    data: {
+    'allCalsses': "" + mData.value // all variables i want to pass. In this case, only one.
+    },
+    success:function(result) {
+    // TODO make download url visible
+    document.getElementById("downloadUrl").innerHTML = "<a id='downloadLink' href='"+result+"'></a>";
+    document.getElementById('downloadLink').click();
+    }
+    });
+    }
+    </script>
+    <script src="./json2kt_files/to-kotlin.js"></script><div>
+    <footer class="section">
+        <p>Made With ❤️ Love</p>
+    </footer>
+</div>
+</body>
+</html>
