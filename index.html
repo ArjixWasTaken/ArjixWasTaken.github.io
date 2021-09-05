@@ -133,12 +133,22 @@
                 }
             </div>
             <!-- Default json -->
-            <div style="display: none" id="input-example">{
-                "user_name": "john123",
-                "email": "john@example.com",
-                "name": "John Doe"
-                }</div>
-
+            <div style="display: none" id="input-example"></div>
+            <script>
+                document.querySelector("#input-example").innerHTML = `[
+   {
+      "cat":"meow"
+   },
+   {
+      "dog":"woof",
+      "cat":"meow"
+   },
+   {
+      "fish":"meow",
+      "cat":"f"
+   }
+]`
+            </script>
         </div>
         <script type="text/javascript">
     function downloadAsFile (mData) {
