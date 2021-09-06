@@ -143,6 +143,15 @@ function getBeanFieldFromJson(text) {
             for (index in jsonArray) {
                 if (!Object(jsonArray[index]).hasOwnProperty(key)) {
                     keys[key].isNullable = true;
+                } else if (
+                    typeof jsonArray[index][key] != typeof keys[key].value
+                ) {
+                    if (
+                        jsonArray[index][key] == null ||
+                        keys[keys].value == null
+                    ) {
+                        keys[key].isNullable = true;
+                    }
                 }
             }
         }
