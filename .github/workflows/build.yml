@@ -28,6 +28,23 @@ jobs:
       with:
         cmd: build # will run `yarn build` command
     
-    - uses: borales/actions-yarn@v2.3.0
+    - name: Copy "build" folder out of repo
+      run: |
+        cp build ../mysite-build
+    
+    - uses: actions/checkout@v2
       with:
-        cmd: deploy # will run `yarn deploy` command
+        ref: "build"
+    
+    - name: Copy "build" folder out of repo
+      run: |
+        find -not -path "./.git/*" -not -name ".git" -delete
+        cp ../mysite-build/* .
+    
+    - uses: stefanzweifel/git-auto-commit-action@v4
+      with:
+        commit_message: Apply automatic changes
+        push_options: --force
+        repository: .
+        skip_fetch: false
+        branch: build
