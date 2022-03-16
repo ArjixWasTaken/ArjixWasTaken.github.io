@@ -19,6 +19,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    
+    - name: Setup github user
+      run: \
+        git config --global user.name "Github Actions"
+        git config --global user.email 53124886+ArjixWasTaken@users.noreply.github.com
 
     - uses: borales/actions-yarn@v2.3.0
       with:
