@@ -28,16 +28,14 @@ jobs:
       with:
         cmd: build # will run `yarn build` command
     
-    - name: Copy "build" folder out of repo
-      run: |
-        cp -r build ../mysite-build
-    
     - name: whatev
       run: |
         mkdir whatev && cd whatev
         cp -r ../.git .git
         git fetch
         git checkout build
+        git config --local user.email "actions@github.com"
+        git config --local user.name "Github Actions"
         find -not -path "./.git/*" -not -name ".git" -delete
         cp -r ../build/* .
         git add .
