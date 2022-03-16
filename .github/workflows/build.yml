@@ -36,6 +36,7 @@ jobs:
       run: |
         mkdir whatev && cd whatev
         cp -r ../.git .git
+        git fetch
         git checkout build
         find -not -path "./.git/*" -not -name ".git" -delete
         cp -r ../build/* .
