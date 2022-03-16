@@ -39,5 +39,5 @@ jobs:
         find -not -path "./.git/*" -not -name ".git" -delete
         cp -r ../build/* .
         git add .
-        git commit -m "Apply automatic changes"
-        git push
+        git commit -m "Apply automatic changes" || echo Nothing to commit
+        git push || echo Nothing to push
