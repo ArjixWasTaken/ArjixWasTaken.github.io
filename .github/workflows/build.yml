@@ -28,7 +28,7 @@ jobs:
       with:
         cmd: build # will run `yarn build` command
     
-    - name: whatev
+    - name: Commit and push the latest build
       run: |
         mkdir whatev && cd whatev
         cp -r ../.git .git
