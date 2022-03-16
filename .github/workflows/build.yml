@@ -30,13 +30,13 @@ jobs:
     
     - name: Copy "build" folder out of repo
       run: |
-        cp build ../mysite-build
+        cp -r build ../mysite-build
     
     - uses: actions/checkout@v2
       with:
         ref: "build"
     
-    - name: Copy "build" folder out of repo
+    - name: Copy the contents of the "build" folder in the repo
       run: |
         find -not -path "./.git/*" -not -name ".git" -delete
         cp ../mysite-build/* .
