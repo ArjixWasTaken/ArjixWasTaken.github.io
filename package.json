@@ -19,7 +19,7 @@
     "web-vitals": "^2.1.0"
   },
   "scripts": {
-    "deploy": "gh-pages -b build -d build",
+    "deploy": "gh-pages -b build -d build -u \"ArjixWasTaken <53124886+ArjixWasTaken@users.noreply.github.com>\" -f",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
