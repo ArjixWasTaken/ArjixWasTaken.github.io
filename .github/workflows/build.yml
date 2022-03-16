@@ -22,8 +22,8 @@ jobs:
     
     - name: Setup github user
       run: \
-        git config --global user.name "Github Actions"
-        git config --global user.email 53124886+ArjixWasTaken@users.noreply.github.com
+        /usr/bin/git config --global user.name "Github Actions"
+        /usr/bin/git config --global user.email 53124886+ArjixWasTaken@users.noreply.github.com
 
     - uses: borales/actions-yarn@v2.3.0
       with:
