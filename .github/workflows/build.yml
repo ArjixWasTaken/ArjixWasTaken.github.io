@@ -32,19 +32,18 @@ jobs:
       run: |
         cp -r build ../mysite-build
     
-    - uses: actions/checkout@v2
-      with:
-        ref: "build"
-    
-    - name: Copy the contents of the "build" folder in the repo
+    - name: whatev
       run: |
+        mkdir whatev && cd whatev
+        cp -r ../.git .git
+        git checkout build
         find -not -path "./.git/*" -not -name ".git" -delete
-        cp ../mysite-build/* .
+        cp -r ../build/* .
     
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Apply automatic changes
         push_options: --force
-        repository: .
+        repository: ./whatev
         skip_fetch: false
         branch: build
